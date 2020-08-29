@@ -15,4 +15,9 @@ then
 fi
 
 printf "[Desktop Entry]\nType=Application\nExec=${HOME}/.wallpaper.sh\nHidden=false\nNoDisplay=false\nX-GNOME-Autostart-enabled=true\nName[en_IN]=Dynamic-Wall\nName=Dynamic-Wall\nComment[en_IN]=A program that dynamically changes the wallpaper based on the time of the day\nComment=A program that dynamically changes the wallpaper based on the time of the day\n" > ~/.config/autostart/.wallpaper.sh.desktop
-~/.wallpaper.sh &
+~/.wallpaper.sh
+
+crontab -l > ./mycron
+echo "0 * * * * ~/.wallpaper.sh" >> ./mycron
+crontab ./mycron
+rm ./mycron
